@@ -40,12 +40,11 @@ RUN apt-get update \
 
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
 RUN pip install poetry
-RUN poetry init
 
 # install postgres dependencies inside of Docker
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
-    && pip install psycopg2
+    && rm -rf /var/lib/apt/lists/*
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
@@ -56,6 +55,7 @@ RUN poetry install --no-dev
 
 # quicker install as runtime deps are already installed
 RUN poetry install
+RUN pip install psycopg2
 
 WORKDIR /app
 
