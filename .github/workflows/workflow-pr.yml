@@ -1,10 +1,11 @@
 name: Python Pull Request Workflow
+
 on: [pull_request]
 jobs:
 
   qa:
     name: Quality check
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python
@@ -15,6 +16,7 @@ jobs:
         run: |
           pip install -U pip
           pip install poetry
+          poetry lock
           poetry install
         env:
           POETRY_VIRTUALENVS_CREATE: false
@@ -26,11 +28,15 @@ jobs:
         shell: bash
         run: python -m poetry install
 
+      - name: Making migrations
+        shell: bash
+        run: python manage.py migrate
+
       - name: Test
         run: |
           poetry run python manage.py test
       - name: Wemake Python Stylguide
-        uses: wemake-services/wemake-python-styleguide@0.16.0
+        uses: wemake-services/wemake-python-styleguide@0.18.0
         continue-on-error: true
         with:
           reporter: 'github-pr-review'
