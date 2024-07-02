@@ -174,4 +174,4 @@ INTERNAL_IPS = [
 
 # 'DJANGO_ALLOWED_HOSTS' shoud be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pythonanywhere']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'eyelexx.pythonanywhere.com']
