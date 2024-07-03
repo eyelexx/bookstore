@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    'eyelexx-bookstore-c87e0a626cc7.herokuapp.com'
+    'eyelexx-bookstore-api-b0b2067db19f.herokuapp.com'
 ]
 
 # Debug Toolbar Config
