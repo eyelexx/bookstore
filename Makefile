@@ -1,5 +1,5 @@
 # Set this to ~use it everywhere in the project setup
-PYTHON_VERSION ?= 3.12
+PYTHON_VERSION ?= 3.8.10
 # the directories containing the library modules this repo builds
 LIBRARY_DIRS = mylibrary
 # build artifacts organized in this Makefile
@@ -85,8 +85,8 @@ deps-py: $(PYTHON_VERSION_FILE) ## Installs Python development and runtime depen
 		--index-url $(PYPI_PROXY) \
 		pip
 	$(PIP) install --upgrade \
-		--index-url $(PYPI_PROXY) \
-		poetry
+        --index-url $(PYPI_PROXY) \
+        poetry
 	$(POETRY) install
 
 ##@ Code Quality
